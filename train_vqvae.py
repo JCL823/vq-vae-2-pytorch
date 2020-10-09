@@ -139,14 +139,15 @@ if __name__ == "__main__":
     )
     parser.add_argument("--dist_url", default=f"tcp://127.0.0.1:{port}")
 
-    parser.add_argument("--size", type=int, default=256)
+    parser.add_argument("--size", type=int, default=128)
     parser.add_argument("--epoch", type=int, default=560)
     parser.add_argument("--lr", type=float, default=3e-4)
     parser.add_argument("--sched", type=str)
-    parser.add_argument("path", type=str)
+    parser.add_argument("path", type=str, default="/Users/chieh-hsinlai/Desktop/mix/RobustGen/vq-vae-2/thumbnails128x128")
 
     args = parser.parse_args()
 
     print(args)
 
-    dist.launch(main, args.n_gpu, 1, 0, args.dist_url, args=(args,))
+#    dist.launch(main, args.n_gpu, 1, 0, args.dist_url, args=(args,))
+    dist.launch(main, args.n_gpu, 1, 0, None, args=(args,))
